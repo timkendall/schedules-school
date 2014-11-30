@@ -1,0 +1,203 @@
+@import url(http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700,400italic);
+
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+    background: #fff;
+    font-family: 'Quattrocento Sans', sans-serif;
+    color: #558391;
+    color: hsla(194, 26%, 45%, 1);
+}
+
+@import 'bourbon/bourbon';
+@import 'reset';
+
+$text-light: hsla(194,46%,75%, 1);
+
+/*
+ * Main containers
+ */
+
+#nav {
+  //background: hsla(24,15%,94%, 1);
+  background: hsla(194,26%,95%, 1);
+
+  ul {
+    margin-top: 18px;
+    li {
+
+      a {
+        display: block;
+        padding: 18px 36px;
+        font-size: 18px;
+        color: hsla(194, 26%, 45%, 0.4);
+        @include transition(all 0.3s ease-in-out);
+      }
+
+      a:hover {
+        color:  hsla(194, 26%, 45%, 1);
+        text-decoration: none;
+        outline: none;
+        @include transition(all 0.3s ease-in-out);
+      }
+
+      a:active {
+        outline: none;
+      }
+
+      a.active {
+        outline: none;
+        color: hsla(243,37%,60%,1);
+        background: hsla(194, 10%, 45%, 0.1);
+      }
+    }
+  }
+}
+
+#courses {
+  .row {
+    border-bottom: 1px solid hsla(194, 26%, 85%, 0.4);
+  }
+  .btn {
+    float: right;
+    margin: 20px;
+    background: hsla(243,37%,60%,1);
+    box-shadow: 0px 1px 1px hsla(243,20%,60%,0.4);
+    border-radius: 3px;
+  }
+}
+
+/*
+ * Tables
+ */
+thead {
+  font-size: 12px;
+  color: hsla(194, 26%, 45%, 0.5);
+  text-transform: uppercase;
+  font-weight: 300;
+  line-height: 55px;
+  //border-bottom: 1px solid hsla(194, 26%, 85%, 1);
+  position: sticky;
+
+  td:first-child {
+      padding-left: 20px;
+    }
+}
+
+.picked {
+  opacity: 0.5;
+}
+
+tbody {
+  font-size: 15px;
+  color: hsla(194, 26%, 45%, 1);
+
+
+  tr {
+    @include backface-visibility(hidden);
+    @include transition(all 0.3s ease-in-out);
+    font-size: 14px;
+    //line-height: 52px;
+    cursor: pointer;
+    td {
+      padding: 20px 0;
+    }
+    td:first-child {
+      padding-left: 20px;
+    }
+
+  }
+
+  tr:nth-child(odd) {
+    background: hsla(194, 26%, 95%, 0.5);
+  }
+
+  tr:hover {
+    //background: darken(#F8F9FB, 5%);
+    //@include transform(scale(1.1));
+    @include transition(all 0.3s ease-in-out);
+  }
+}
+
+/*
+ * Elements
+ */
+
+ .row {
+  margin-bottom: 0;
+ }
+ .term {
+  font-size: 10px;
+  text-transform: uppercase;
+  border-radius: 99px;
+  padding: 2px 5px;
+  border: 1px solid #515558;
+  color: #515558;
+}
+
+.term.Fall {
+  border: 1px solid #EA8927;
+  color: #EA8927;
+}
+
+.term.Interterm {
+  border: 1px solid #3CC4E7;
+  color: #3CC4E7;
+}
+
+.term.Spring {
+  border: 1px solid #5FD571;
+  color: #5FD571;
+}
+
+.term.Summer {
+  border: 1px solid #E9B860;
+  color: #E9B860;
+}
+
+
+.search {
+    float: left;
+    position: relative;
+    margin: 20px 0 20px 20px;
+     input {
+      display: block;
+      border-radius: 99px;
+      border: 1px solid hsla(194, 26%, 85%, 1);
+      height: 30px;
+      padding: 0 20px 0 30px;
+      position: relative;
+      color: hsla(194, 26%, 45%, 1);
+      background: #fff;
+      font-size: 12px;
+      width: 200px;
+      box-shadow: inset 0px 1px 1px  hsla(194, 20%, 45%, 0.1);
+
+      @include placeholder {
+        opacity: 0;
+      }
+    }
+
+    input:active, input:focus {
+      outline: none;
+
+    }
+  }
+
+
+  .search:before {
+    content: "\1f50d";
+    font-family: 'entypo';
+    width: 20px;
+    height: 65px;
+    padding: 0 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 30px;
+    color: hsla(194,26%,45%, 1);
+  }
