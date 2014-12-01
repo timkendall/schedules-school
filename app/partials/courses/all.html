@@ -1,0 +1,85 @@
+<!-- Search and add button -->
+<div class="row">
+  <div class="column-16">
+    <div class="search">
+      <input type="text" ng-model="search" name="search" placeholder="Find courses" />
+    </div>
+
+    <div class="btn btn-small" ng-click="creatingCourse = true">
+      <i class="icon-plus"></i>
+    </div>
+  </div>
+</div>
+
+<!-- List of courses -->
+<div class="table-responsive">
+  <table class="table-full">
+
+       <thead>
+          <tr>
+
+            <td>Term</td>
+            <td>Course</td>
+            <td>GE</td>
+            <td>Title</td>
+            <td>Sections</td>
+            <td>Likes</td>
+            <td><!-- for like button --></td>
+          </tr>
+       </thead>
+
+       <tbody>
+        <tr ng-repeat="course in courses | filter:search">
+
+            <td><span class="term Spring">Spring 2015</span></td>
+            <td>{{course.courseId}}</td>
+            <td>{{course.GEs}}</td>
+            <td><span editable-text="course.name" onaftersave="afterSave(course)">{{course.name || 'empty' }}</span></td>
+            <td ng-click="go(course)" ng-click="go(course)">{{course.sections.length}}</td>
+            <td>{{course.likes}} likes</td>
+            <td><i class="icon-cog"></i></td>
+        </tr>
+
+       </tbody>
+    </table>
+   </div>
+
+    <!-- Add course form -->
+   <div class="slide-modal animated fadeInUp" ng-show="creatingCourse">
+
+    <form ng-submit="submit()">
+      <div class="row">
+        <div class="column-4">
+          <label for="course">Course</label>
+          <input type="text" name="course" placeholder="CPSC-353" ng-model="course.courseId" autofocus />
+        </div>
+
+        <div class="column-4">
+          <label for="name">Name</label>
+          <input type="text" name="name" placeholder="Computer Networks" ng-model="course.name" />
+        </div>
+
+        <div class="column-4">
+          <label for="term">Term</label>
+           <select>
+              <option name="Test">Test</option>
+            </select>
+        </div>
+
+        <div class="column-4">
+          <label for="credits">Credits</label>
+          <select ng-model="course.credits">
+              <option name="0.5" value="0.5">0.5</option>
+              <option name="1" value="1">1</option>
+              <option name="3" value="3">3</option>
+          </select>
+        </div>
+
+      </div>
+
+
+      <button type="button" class="btn cancel" ng-click="creatingCourse = false"><i class="icon-cancel"></i></button>
+      <button type="submit" class="btn submit"><i class="icon-check"></i></button>
+
+    </form>
+   </div>

@@ -1,0 +1,80 @@
+<!-- Search and add button -->
+<div id="professors">
+<div class="row">
+  <div class="column-16">
+    <div class="search">
+      <input type="text" ng-model="search" name="search" placeholder="" />
+    </div>
+
+    <div class="btn btn-small" ng-click="creatingProfessor = true">
+      <i class="icon-plus"></i>
+    </div>
+  </div>
+</div>
+
+<!-- List of courses -->
+<div class="table-responsive">
+  <table class="table-full">
+
+       <thead>
+          <tr>
+
+            <td>First</td>
+            <td>Last</td>
+            <td>Rate My Professor</td>
+            <td>Email</td>
+            <td>Rating</td>
+            <td>Sections</td>
+
+            <td><!-- for button --></td>
+          </tr>
+       </thead>
+
+       <tbody>
+        <tr ng-repeat="professor in professors | filter:search">
+            <td><span editable-text="professor.firstName" onaftersave="afterSave(professor)">{{professor.firstName}}</span></td>
+            <td><span editable-text="professor.lastName" onaftersave="afterSave(professor)">{{professor.lastName}}</span></td>
+            <td><span editable-text="professor.rmpUrl" onaftersave="afterSave(professor)">{{professor.rmpUrl || 'add url'}}</span></td>
+            <td><span editable-text="professor.email" onaftersave="afterSave(professor)">{{professor.email || 'add email'}}</span></td>
+            <td>{{professor.rating}}</td>
+            <td>{{professor.sections.length}}</td>
+            <td><i class="icon-cog"></i></td>
+        </tr>
+
+       </tbody>
+    </table>
+   </div>
+
+    <!-- Add course form -->
+   <div class="slide-modal animated fadeInUp" ng-show="creatingProfessor">
+
+    <form ng-submit="submit()">
+      <div class="row">
+        <div class="column-4">
+          <label for="first">First</label>
+          <input type="text" name="first" placeholder="Bob" ng-model="professor.firstName" autofocus />
+        </div>
+
+        <div class="column-4">
+         <label for="last">Last</label>
+          <input type="text" name="last" placeholder="Jones" ng-model="professor.lastName" />
+        </div>
+
+        <div class="column-4">
+         <label for="rmpUrl">Last</label>
+          <input type="text" name="rmpUrl" placeholder="http://www.ratemyprofessors.com/" ng-model="professor.rmpUrl" />
+        </div>
+
+        <div class="column-4">
+
+        </div>
+
+      </div>
+
+
+      <button type="button" class="btn cancel" ng-click="creatingProfessor = false"><i class="icon-cancel"></i></button>
+      <button type="submit" class="btn submit"><i class="icon-check"></i></button>
+
+    </form>
+   </div>
+  </div>

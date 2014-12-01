@@ -10,7 +10,9 @@
    <link rel="stylesheet" href="components/molten/molten.min.css">
    <link rel="stylesheet" href="components/concise/dist/css/concise.css">
    <link rel="stylesheet" href="components/entypo/font/entypo.css">
-
+   <link rel="stylesheet" href="components/animate.css/animate.min.css">
+   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+   <link rel="stylesheet" href="components/angular-xeditable/dist/css/xeditable.css">
     <!-- build:css({.tmp,app}) styles/vendor.css -->
     <link rel="stylesheet" href="styles/vendor.css">
     <!-- endbuild -->
@@ -32,7 +34,7 @@
       <nav id="nav" class="bar">
         <!-- left sidebar (250px) -->
         <ul class="list-unstyled">
-          <li><a ui-sref-active="active" ui-sref="courses"><i class="icon-doc-text"></i> Courses</a></li>
+          <li><a ng-class="{active: $state.includes('courses')}" ui-sref="courses.all"><i class="icon-doc-text"></i> Courses</a></li>
           <li><a ui-sref-active="active" ui-sref="majors"><i class="icon-graduation-cap"></i> Majors</a></li>
           <li><a ui-sref-active="active" ui-sref="professors"><i class="icon-user"></i> Professors</a></li>
           <li><a ui-sref-active="active" ui-sref="terms"><i class="icon-calendar"></i> Terms</a></li>
@@ -40,7 +42,7 @@
       </nav>
       <section class="content">
         <!-- the content (fluid) -->
-        <div ui-view></div>
+        <div ui-view style="height: 100%;"></div>
       </section>
     </div>
 
@@ -66,15 +68,26 @@
     <script src="components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="components/concise/dist/js/concise.js"></script>
     <script src="components/angular-data/dist/angular-data.min.js"></script>
+    <script src="components/lodash/dist/lodash.compat.js"></script>
+    <script src="components/angular-xeditable/dist/js/xeditable.js"></script>
+    <script src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({app,.tmp}) scripts/main.js -->
-    <script src="scripts/schedulesSchool.js"></script>
-    <script src="scripts/main/main-ctrl.js"></script>
+    <script src="scripts/app.js"></script>
     <script src="scripts/services/course.js"></script>
     <script src="scripts/services/professor.js"></script>
+    <script src="scripts/services/section.js"></script>
+    <script src="scripts/services/major.js"></script>
+    <script src="scripts/controllers/courses.js"></script>
     <script src="scripts/controllers/course.js"></script>
+    <script src="scripts/controllers/professors.js"></script>
+    <script src="scripts/controllers/majors.js"></script>
+    <script src="scripts/filters/days.js"></script>
+    <script src="scripts/filters/time.js"></script>
+    <script src="scripts/filters/unique.js"></script>
+    <script src="scripts/directives/autofocus.js"></script>
     <!-- inject:partials -->
     <!-- endinject -->
     <!-- endbuild -->
