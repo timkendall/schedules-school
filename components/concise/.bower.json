@@ -1,0 +1,37 @@
+{
+  "name": "concise",
+  "description": "A lightweight front-end framework that provides functionality without the bloat.",
+  "version": "2.0.0",
+  "ignore": [
+    ".gitignore",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
+  "keywords": [
+    "css",
+    "js",
+    "scss",
+    "sass",
+    "mobile-first",
+    "responsive",
+    "front-end",
+    "framework",
+    "web"
+  ],
+  "homepage": "http://concisecss.com",
+  "main": [
+    "dist/css/concise.css",
+    "dist/js/concise.js"
+  ],
+  "_release": "2.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.0",
+    "commit": "59a4839d0199b4888edab46aecb22d813daa80ce"
+  },
+  "_source": "git://github.com/ConciseCSS/concise.css.git",
+  "_target": "~2.0.0",
+  "_originalSource": "concise",
+  "_direct": true
+}

@@ -1,0 +1,447 @@
+@import url(http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700,400italic);
+html, body {
+  width: 100%;
+  height: 100%; }
+
+body {
+  background: #fff;
+  font-family: 'Quattrocento Sans', sans-serif;
+  color: #558391;
+  color: #558391; }
+
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  line-height: 1; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+nav ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none; }
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none; }
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold; }
+
+del {
+  text-decoration: line-through; }
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0; }
+
+input, select {
+  vertical-align: middle; }
+
+/*
+ * Main containers
+ */
+#nav {
+  background: #eff4f6; }
+  #nav ul {
+    margin-top: 18px; }
+    #nav ul li a {
+      display: block;
+      padding: 18px 36px;
+      text-decoration: none !important;
+      font-size: 18px;
+      color: rgba(84, 130, 144, 0.4);
+      transition: all 0.3s ease-in-out; }
+    #nav ul li a:hover {
+      color: #558391;
+      text-decoration: none !important;
+      outline: none;
+      transition: all 0.3s ease-in-out; }
+    #nav ul li a:active {
+      outline: none;
+      text-decoration: none !important; }
+    #nav ul li a.active {
+      outline: none;
+      color: #7773bf;
+      background: rgba(103, 120, 126, 0.1); }
+
+#courses, #professors {
+  position: relative;
+  height: 100%; }
+  #courses .row, #professors .row {
+    border-bottom: 1px solid rgba(206, 222, 226, 0.4); }
+  #courses .btn, #professors .btn {
+    float: right;
+    margin: 20px;
+    background: #7773bf;
+    box-shadow: 0px 1px 1px rgba(134, 132, 173, 0.4);
+    border-radius: 3px; }
+  #courses .slide-modal, #professors .slide-modal {
+    padding: 0 20px;
+    border-top: 1px solid rgba(206, 222, 226, 0.4);
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s; }
+    #courses .slide-modal .row, #professors .slide-modal .row {
+      border: none; }
+    #courses .slide-modal form, #professors .slide-modal form {
+      padding: 12px 0;
+      padding-left: 100px; }
+    #courses .slide-modal .btn, #professors .slide-modal .btn {
+      border-radius: 0;
+      height: 100%;
+      box-shadow: none;
+      margin: 0; }
+    #courses .slide-modal .btn.submit, #professors .slide-modal .btn.submit {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #64d375; }
+    #courses .slide-modal .btn.cancel, #professors .slide-modal .btn.cancel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #fa5764; }
+
+/*
+ * Tables
+ */
+thead {
+  font-size: 12px;
+  color: rgba(84, 130, 144, 0.5);
+  text-transform: uppercase;
+  font-weight: 300;
+  line-height: 55px;
+  position: -webkit-sticky;
+  position: sticky; }
+  thead td:first-child {
+    padding-left: 20px; }
+
+.picked {
+  opacity: 0.5; }
+
+tbody {
+  font-size: 15px;
+  color: #558391;
+  /*
+   * Style xeditable form and buttons
+   */ }
+  tbody .editable {
+    color: #558391; }
+  tbody form .btn {
+    margin: 0 !important; }
+  tbody form .btn-primary {
+    background: #64d375 !important;
+    border: none; }
+  tbody form .btn-default {
+    background: #fa5764 !important;
+    border: none;
+    margin: 0 10px !important; }
+  tbody tr {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    font-size: 14px;
+    cursor: pointer; }
+    tbody tr td {
+      padding: 20px 0; }
+    tbody tr td:first-child {
+      padding-left: 20px; }
+  tbody tr:nth-child(odd) {
+    background: rgba(238, 244, 245, 0.5); }
+  tbody tr:hover {
+    transition: all 0.3s ease-in-out; }
+
+/*
+ * Elements
+ */
+form label {
+  color: #8fb2bd;
+  text-transform: uppercase;
+  font-size: 11px; }
+
+.slide-modal {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff; }
+
+.row {
+  margin-bottom: 0; }
+
+.term {
+  font-size: 10px;
+  text-transform: uppercase;
+  border-radius: 99px;
+  padding: 2px 5px;
+  border: 1px solid #515558;
+  color: #515558; }
+
+.term.Fall {
+  border: 1px solid #EA8927;
+  color: #EA8927; }
+
+.term.Interterm {
+  border: 1px solid #3CC4E7;
+  color: #3CC4E7; }
+
+.term.Spring {
+  border: 1px solid #5FD571;
+  color: #5FD571; }
+
+.term.Summer {
+  border: 1px solid #E9B860;
+  color: #E9B860; }
+
+.search {
+  float: left;
+  position: relative;
+  margin: 22px 0 20px 40px; }
+  .search input {
+    display: block;
+    border-radius: 99px;
+    border: 1px solid #cfdee3;
+    height: 30px;
+    padding: 0 20px 0 30px;
+    position: relative;
+    color: #558391;
+    background: #fff;
+    font-size: 12px;
+    width: 200px;
+    box-shadow: inset 0px 1px 1px rgba(91, 126, 137, 0.1); }
+    .search input::-webkit-input-placeholder {
+      opacity: 0; }
+    .search input::-moz-placeholder {
+      opacity: 0; }
+    .search input:-ms-input-placeholder {
+      opacity: 0; }
+  .search input:active, .search input:focus {
+    outline: none; }
+
+.search:before {
+  content: "\1f50d";
+  font-family: 'entypo';
+  width: 20px;
+  height: 65px;
+  padding: 0 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 30px;
+  z-index: 99;
+  color: #558391; }
+
+/*
+ * ng-enter, ng-leave, ng-hide-add, .ng-hide-remove animations
+ */
+@-webkit-keyframes slideInRight {
+  from {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%); }
+
+  to {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); } }
+
+/*
+ * ng-enter, ng-leave, ng-hide-add, .ng-hide-remove animations
+ */
+@keyframes slideInRight {
+  from {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%); }
+
+  to {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); } }
+
+@-webkit-keyframes slideOutLeft {
+  to {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%); } }
+
+@keyframes slideOutLeft {
+  to {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%); } }
+
+.fadeInUp.ng-hide-add {
+  -webkit-animation: fadeOutDown 0.3s ease-in-out;
+  animation: fadeOutDown 0.3s ease-in-out; }
+
+.animateSlide.ng-enter {
+  -webkit-animation: slideInRight 0.3s both ease-in;
+  animation: slideInRight 0.3s both ease-in;
+  z-index: 8888; }
+
+.animateSlide.ng-leave {
+  -webkit-animation: slideOutLeft 0.3s both ease-in;
+  animation: slideOutLeft 0.3s both ease-in;
+  z-index: 9999; }
+
+/*
+ * Custom forms
+ */
+/* Base for label styling */
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px; }
+
+[type="checkbox"]:not(:checked) + label, [type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer; }
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before, [type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -5px;
+  width: 13px;
+  height: 13px;
+  border: 1px solid #C9CACE;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1); }
+
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after, [type="checkbox"]:checked + label:after {
+  content: "\f00c";
+  font-family: 'FontAwesome';
+  position: absolute;
+  top: -26px;
+  left: 2px;
+  font-size: 10px;
+  color: #fff;
+  transition: all 0.2s;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3); }
+
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0); }
+
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1); }
+
+/* checked checkbox */
+[type="checkbox"]:checked + label:before, [type="checkbox"]:checked + label:before {
+  background: #20b0be;
+  border-color: #1d9ca8;
+  box-shadow: none; }
+
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before, [type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd; }
+
+[type="checkbox"]:disabled:checked + label:after {
+  color: #999; }
+
+[type="checkbox"]:disabled + label {
+  color: #aaa; }
+
+/* accessibility */
+.select-days {
+  margin-top: 6px;
+  margin-left: 25px; }
+  .select-days li:first-child label {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px; }
+  .select-days li:last-child label {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-right: 1px solid rgba(0, 0, 0, 0.15); }
+  .select-days li {
+    display: inline-block;
+    width: 42px;
+    height: 30px;
+    margin: 0 -4px 0 0;
+    padding: 0;
+    /* checkbox */
+    /* checked checkbox */
+    /* check */ }
+    .select-days li label {
+      display: block;
+      width: 100%;
+      padding-left: 0;
+      line-height: 30px;
+      background: none;
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      border-right: none;
+      color: rgba(0, 0, 0, 0.15);
+      text-decoration: line-through;
+      transition: all 0.2s ease-in-out; }
+    .select-days li label:before {
+      display: inline-block; }
+    .select-days li [type="checkbox"]:not(:checked) + label:before, .select-days li [type="checkbox"]:checked + label:before {
+      opacity: 0;
+      top: 0;
+      background: none;
+      border-color: rgba(255, 255, 255, 0.38); }
+    .select-days li [type="checkbox"]:checked + label:before, .select-days li [type="checkbox"]:checked + label:before {
+      background: rgba(255, 255, 255, 0.6);
+      border-color: rgba(255, 255, 255, 0);
+      box-shadow: none; }
+    .select-days li [type="checkbox"]:not(:checked) + label:after, .select-days li [type="checkbox"]:checked + label:after {
+      color: #26708F;
+      text-shadow: none;
+      top: 0px;
+      opacity: 0; }
+    .select-days li [type="checkbox"]:checked + label, .select-days li [type="checkbox"]:checked + label {
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.5);
+      box-shadow: none;
+      transition: all 0.2s ease-in-out; }

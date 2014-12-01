@@ -1,0 +1,95 @@
+<!-- Search and add button -->
+<div class="row">
+  <div class="column-16">
+    <div class="search">
+      <input type="text" ng-model="search" name="search" placeholder="Find courses" />
+    </div>
+
+    <div class="btn btn-small" ng-click="creatingSection = true">
+      <i class="icon-plus"></i>
+    </div>
+  </div>
+</div>
+
+<!-- List of courses -->
+<div class="table-responsive">
+ <table class="table-full">
+        <thead>
+            <tr>
+                <td>Course</td>
+                <td>Days</td>
+                <td>Start</td>
+                <td>End</td>
+                <td>Professor</td>
+                <td>Location</td>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="section in course.sections | filter:search">
+                <td>{{course.courseId}}</td>
+                <td>{{section.meets | days}}</td>
+                <td>{{section.start | time}}</td>
+                <td>{{section.end | time}}</td>
+                <td><span editable-text="section.professor" e-typeahead="professor for professor in professors | filter:$viewValue | limitTo:8" e-typeahead-template-url="customTemplate.html" e-typeahead-input-formatter="formatProfessorSelection($model)" onaftersave="afterSave(section)">{{section.professor.firstName}} {{section.professor.lastName}}</span></td>
+                <td>{{section.location}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+    <!-- Add course form -->
+   <div class="slide-modal animated fadeInUp" ng-show="creatingSection">
+
+    <form ng-submit="submit()">
+      <div class="row">
+        <div class="column-4">
+          <label for="start">Start</label>
+          <input type="time" name="start" placeholder="11am" ng-model="section.start" />
+
+           <label for="end">End</label>
+          <input type="time" name="end" placeholder="12:15pm" ng-model="section.end" />
+        </div>
+
+        <!-- days -->
+        <div class="column-4">
+        <ul class="select-days list-inline">
+
+                    <li><input type="checkbox" value="mon" ng-click="toggleSelection('Mon')" ng-checked="section.meets.indexOf('Mon') > -1" id="mon" /><label for="mon">Mon</label></li>
+                    <li><input type="checkbox" value="tue" ng-click="toggleSelection('Tue')" ng-checked="section.meets.indexOf('Tue') > -1" id="tue" /><label for="tue">Tue</label></li>
+
+
+                    <li><input type="checkbox" value="wed" ng-click="toggleSelection('Wed')" ng-checked="section.meets.indexOf('Wed') > -1" id="wed" /><label for="wed">Wed</label></li>
+                    <li><input type="checkbox" value="thu" ng-click="toggleSelection('Thu')" ng-checked="section.meets.indexOf('Thu') > -1" id="thu" /><label for="thu">Thu</label></li>
+
+
+                    <li><input type="checkbox" value="fri" ng-click="toggleSelection('Fri')" ng-checked="section.meets.indexOf('Fri') > -1" id="fri" /><label for="fri">Fri</label></li>
+                    <li><input type="checkbox" value="sat" ng-click="toggleSelection('Sat')" ng-checked="section.meets.indexOf('Sat') > -1" id="sat" /><label for="sat">Sat</label></li>
+
+             </ul>
+        </div>
+
+        <div class="column-4">
+          <script type="text/ng-template" id="customTemplate.html">
+            <a>
+                {{match.model.firstName}} {{match.model.lastName}}
+            </a>
+          </script>
+          <label for="professor">Professor</label>
+          <input type="text" name="professor" placeholder="Rene German" ng-model="section.professor" typeahead="professor for professor in professors | filter:$viewValue | limitTo:8" typeahead-editable="true" typeahead-template-url="customTemplate.html" typeahead-input-formatter="formatProfessorSelection($model)"/>
+        </div>
+
+        <div class="column-4">
+          <label for="location">Location</label>
+          <input type="text" name="location" placeholder="Library B13" ng-model="section.location" />
+        </div>
+
+      </div>
+
+
+      <button type="button" class="btn cancel" ng-click="creatingSection = false"><i class="icon-cancel"></i></button>
+      <button type="submit" class="btn submit"><i class="icon-check"></i></button>
+
+    </form>
+   </div>

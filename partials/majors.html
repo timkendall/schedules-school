@@ -1,0 +1,74 @@
+<!-- Search and add button -->
+<div id="professors">
+<div class="row">
+  <div class="column-16">
+    <div class="search">
+      <input type="text" ng-model="search" name="search" placeholder="" />
+    </div>
+
+    <div class="btn btn-small" ng-click="creatingMajor = true">
+      <i class="icon-plus"></i>
+    </div>
+  </div>
+</div>
+
+<!-- List of courses -->
+<div class="table-responsive">
+  <table class="table-full">
+
+       <thead>
+          <tr>
+
+            <td>Abbreviation</td>
+            <td>Name</td>
+            <td>Courses</td>
+
+            <td><!-- for button --></td>
+          </tr>
+       </thead>
+
+       <tbody>
+        <tr ng-repeat="major in majors | filter:search">
+            <td><span editable-text="major.abbreviation" onaftersave="afterSave(major)">{{major.abbreviation}}</span></td>
+            <td><span editable-text="major.name" onaftersave="afterSave(major)">{{major.name}}</span></td>
+            <td>{{major.courses.length || 0}}</td>
+
+            <td><i class="icon-cog"></i></td>
+        </tr>
+
+       </tbody>
+    </table>
+   </div>
+
+    <!-- Add course form -->
+   <div class="slide-modal animated fadeInUp" ng-show="creatingMajor">
+
+    <form ng-submit="submit()">
+      <div class="row">
+        <div class="column-4">
+          <label for="abbreviation">Abbreviation</label>
+          <input type="text" name="abbreviation" placeholder="ECON" ng-model="major.abbreviation" capitalize autofocus />
+        </div>
+
+        <div class="column-4">
+         <label for="last">Name</label>
+          <input type="text" name="name" placeholder="Economics" ng-model="major.name" />
+        </div>
+
+        <div class="column-4">
+
+        </div>
+
+        <div class="column-4">
+
+        </div>
+
+      </div>
+
+
+      <button type="button" class="btn cancel" ng-click="creatingMajor = false"><i class="icon-cancel"></i></button>
+      <button type="submit" class="btn submit"><i class="icon-check"></i></button>
+
+    </form>
+   </div>
+  </div>

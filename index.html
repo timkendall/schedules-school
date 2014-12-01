@@ -1,0 +1,104 @@
+<!doctype html>
+<html class="no-js" ng-app="schedulesSchool">
+  <head>
+    <meta charset="utf-8">
+    <title>Chapman University</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+   <link rel="stylesheet" href="components/molten/molten.min.css">
+   <link rel="stylesheet" href="components/concise/dist/css/concise.css">
+   <link rel="stylesheet" href="components/entypo/font/entypo.css">
+   <link rel="stylesheet" href="components/animate.css/animate.min.css">
+   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+   <link rel="stylesheet" href="components/angular-xeditable/dist/css/xeditable.css">
+    <!-- build:css({.tmp,app}) styles/vendor.css -->
+    <link rel="stylesheet" href="styles/vendor.css">
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:js scripts/modernizr.js -->
+    <script src="components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="grid columns split250">
+      <nav id="nav" class="bar" ng-show="auth.isAuthenticated">
+        <!-- left sidebar (250px) -->
+        <ul class="list-unstyled">
+          <li><a ng-class="{active: $state.includes('courses')}" ui-sref="courses.all"><i class="icon-doc-text"></i> Courses</a></li>
+          <li><a ui-sref-active="active" ui-sref="majors"><i class="icon-graduation-cap"></i> Majors</a></li>
+          <li><a ui-sref-active="active" ui-sref="professors"><i class="icon-user"></i> Professors</a></li>
+          <li><a ui-sref-active="active" ui-sref="terms"><i class="icon-calendar"></i> Terms</a></li>
+        </ul>
+      </nav>
+      <section class="content">
+        <!-- the content (fluid) -->
+        <div ui-view style="height: 100%;"></div>
+      </section>
+    </div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="components/angular/angular.js"></script>
+    <script src="components/angular-animate/angular-animate.js"></script>
+    <script src="components/angular-cookies/angular-cookies.js"></script>
+    <script src="components/angular-touch/angular-touch.js"></script>
+    <script src="components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="components/angular-resource/angular-resource.js"></script>
+    <script src="components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="components/concise/dist/js/concise.js"></script>
+    <script src="components/angular-data/dist/angular-data.min.js"></script>
+    <script src="components/lodash/dist/lodash.compat.js"></script>
+    <script src="components/angular-xeditable/dist/js/xeditable.js"></script>
+    <script src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="components/angular-jwt/dist/angular-jwt.js"></script>
+    <script src="components/auth0.js/build/auth0.js"></script>
+    <script src="components/auth0-lock/build/auth0-lock.js"></script>
+    <script src="components/auth0-angular/build/auth0-angular.js"></script>
+
+    <!-- endbower -->
+    <!-- endbuild -->
+
+     <script type="text/javascript" src="//rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
+
+    <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services/course.js"></script>
+    <script src="scripts/services/professor.js"></script>
+    <script src="scripts/services/section.js"></script>
+    <script src="scripts/services/major.js"></script>
+    <script src="scripts/controllers/courses.js"></script>
+    <script src="scripts/controllers/course.js"></script>
+    <script src="scripts/controllers/professors.js"></script>
+    <script src="scripts/controllers/majors.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/filters/days.js"></script>
+    <script src="scripts/filters/time.js"></script>
+    <script src="scripts/filters/unique.js"></script>
+    <script src="scripts/directives/autofocus.js"></script>
+    <!-- inject:partials -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
+  </body>
+</html>
