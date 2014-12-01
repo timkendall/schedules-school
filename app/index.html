@@ -31,7 +31,7 @@
     <![endif]-->
 
     <div class="grid columns split250">
-      <nav id="nav" class="bar">
+      <nav id="nav" class="bar" ng-show="auth.isAuthenticated">
         <!-- left sidebar (250px) -->
         <ul class="list-unstyled">
           <li><a ng-class="{active: $state.includes('courses')}" ui-sref="courses.all"><i class="icon-doc-text"></i> Courses</a></li>
@@ -71,8 +71,15 @@
     <script src="components/lodash/dist/lodash.compat.js"></script>
     <script src="components/angular-xeditable/dist/js/xeditable.js"></script>
     <script src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="components/angular-jwt/dist/angular-jwt.js"></script>
+    <script src="components/auth0.js/build/auth0.js"></script>
+    <script src="components/auth0-lock/build/auth0-lock.js"></script>
+    <script src="components/auth0-angular/build/auth0-angular.js"></script>
+
     <!-- endbower -->
     <!-- endbuild -->
+
+     <script type="text/javascript" src="//rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
 
     <!-- build:js({app,.tmp}) scripts/main.js -->
     <script src="scripts/app.js"></script>
@@ -84,6 +91,7 @@
     <script src="scripts/controllers/course.js"></script>
     <script src="scripts/controllers/professors.js"></script>
     <script src="scripts/controllers/majors.js"></script>
+    <script src="scripts/controllers/login.js"></script>
     <script src="scripts/filters/days.js"></script>
     <script src="scripts/filters/time.js"></script>
     <script src="scripts/filters/unique.js"></script>

@@ -1,25 +1,47 @@
 'use strict';
 
-angular.module('schedulesSchool', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'angular-data.DS', 'ui.bootstrap', 'xeditable'])
-  .config(function ($stateProvider, $urlRouterProvider) {
+angular.module('schedulesSchool', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'angular-data.DS', 'angular-storage', 'ui.bootstrap', 'xeditable', 'angular-jwt', 'auth0'])
+  .config(function ($stateProvider, $urlRouterProvider, $httpProvider, authProvider, jwtInterceptorProvider) {
+     // Configure Auth0 authentication
+    authProvider.init({
+        domain: 'schedules.auth0.com',
+        clientID: 'hHXmSgTUz2Cfv1LwjTLPgVcUoY8QBnls',
+        loginState: 'login'
+    });
+    // Configure $http interceptors (send user's token for every API call)
+    jwtInterceptorProvider.tokenGetter = function(store) {
+        // Return the saved token
+        return store.get('token');
+    }
+    //$httpProvider.interceptors.push('jwtInterceptor');
+
     $stateProvider
      // Find courses
     .state('courses', {
        abstract: true,
        url: '/courses',
        templateUrl: 'partials/courses/main.html',
-       controller: 'CoursesCtrl'
+       controller: 'CoursesCtrl',
+       data: {
+          requiresLogin: true
+        }
     })
 
     // Find courses to add
     .state('courses.all', {
         url: '/all',
-        templateUrl: 'partials/courses/all.html'
+        templateUrl: 'partials/courses/all.html',
+        data: {
+          requiresLogin: true
+        }
     })
      .state('courses.single', {
         url: '/:courseId',
         templateUrl: 'partials/courses/single.html',
         controller: 'CourseCtrl',
+        data: {
+          requiresLogin: true
+        },
         resolve: {
             loadCourse: function($q, $stateParams, $window, $location, Course) {
                 var deferred = $q.defer();
@@ -56,24 +78,39 @@ angular.module('schedulesSchool', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
       .state('majors', {
         url: '/majors',
         templateUrl: 'partials/majors.html',
-        controller: 'MajorsCtrl'
+        controller: 'MajorsCtrl',
+        data: {
+          requiresLogin: true
+        }
       })
 
       .state('professors', {
         url: '/professors',
         templateUrl: 'partials/professors.html',
-        controller: 'ProfessorsCtrl'
+        controller: 'ProfessorsCtrl',
+        data: {
+          requiresLogin: true
+        }
       })
 
       .state('terms', {
         url: '/terms',
         templateUrl: 'partials/terms.html',
-        controller: 'CoursesCtrl'
+        controller: 'CoursesCtrl',
+        data: {
+          requiresLogin: true
+        }
+      })
+
+      .state('login', {
+        url: '/login',
+        templateUrl: 'partials/login.html',
+        controller: 'LoginCtrl'
       });
 
     $urlRouterProvider.otherwise('/courses/all');
   })
-  .run(function ($rootScope, $state, editableOptions, editableThemes) {
+  .run(function ($rootScope, $state, editableOptions, editableThemes, auth, store, jwtHelper) {
     // Catch state change errors
     $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
         console.log(error)
@@ -81,10 +118,27 @@ angular.module('schedulesSchool', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
 
     // Make $state available everywhere for UI
     $rootScope.$state = $state;
+    $rootScope.auth = auth;
 
     // Setup templates/styles for xeditable
-    // set `default` theme
     editableThemes.bs3.inputClass = 'input-sm';
-  editableThemes.bs3.buttonsClass = 'btn-sm';
-  editableOptions.theme = 'bs3';
+    editableThemes.bs3.buttonsClass = 'btn-sm';
+    editableOptions.theme = 'bs3';
+
+    // This hooks all auth events to check everything as soon as the app starts
+    auth.hookEvents();
+    // Maintain a user's login on page refresh
+    $rootScope.$on('$locationChangeStart', function() {
+    if (!auth.isAuthenticated) {
+      var token = store.get('token');
+      if (token) {
+        if (!jwtHelper.isTokenExpired(token)) {
+          auth.authenticate(store.get('profile'), token);
+        } else {
+          $state.go('login');
+        }
+      }
+    }
+
+  });
 });
